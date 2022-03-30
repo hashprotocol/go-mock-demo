@@ -1,12 +1,13 @@
 package ethclient
 
 import (
-	"github.com/ansermino/go-mock-demo/ethclient/mock"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/golang/mock/gomock"
-	"github.com/stretchr/testify/assert"
 	"math/big"
 	"testing"
+
+	"github.com/ethereum/go-ethereum/core/types"
+	"github.com/golang/mock/gomock"
+	mock_ethclient "github.com/hashprotocol/go-mock-demo/ethclient/mock"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestChainInteractor_CheckBlocks(t *testing.T) {
@@ -27,7 +28,6 @@ func TestChainInteractor_CheckBlocks(t *testing.T) {
 
 	client.EXPECT().BlockByNumber(gomock.Any(), big.NewInt(2)).Return(&types.Block{}, nil)
 	db.EXPECT().StoreBlock(gomock.Any())
-
 
 	err := chain.CheckBlocks(0, 3)
 	assert.Nil(t, err)
