@@ -1,4 +1,4 @@
-module github.com/ansermino/go-mock-demo
+module github.com/hashprotocol/go-mock-demo
 
 go 1.15
 

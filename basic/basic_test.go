@@ -1,10 +1,11 @@
 package basic
 
 import (
-	mock_basic "github.com/ansermino/go-mock-demo/basic/mock"
-	"github.com/golang/mock/gomock"
-	"github.com/stretchr/testify/assert"
 	"testing"
+
+	"github.com/golang/mock/gomock"
+	mock_basic "github.com/hashprotocol/go-mock-demo/basic/mock"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestStoreMulti(t *testing.T) {
@@ -16,7 +17,7 @@ func TestStoreMulti(t *testing.T) {
 	db.EXPECT().Put("a", "a").Return(nil)
 	db.EXPECT().Put("b", "b").Return(nil)
 
-	assert.Nil(t, StoreMulti([]string{"a", "b"}, []string{"a","b"}, db))
+	assert.Nil(t, StoreMulti([]string{"a", "b"}, []string{"a", "b"}, db))
 }
 
 //func TestStoreMultiFailing(t *testing.T) {
@@ -40,7 +41,7 @@ func TestFetchMulti(t *testing.T) {
 	db.EXPECT().Get("a").Return("a", nil)
 	db.EXPECT().Get("b").Return("b", nil)
 
-	vals, err := FetchMulti([]string{"a","b"}, db)
+	vals, err := FetchMulti([]string{"a", "b"}, db)
 	assert.Nil(t, err)
-	assert.Equal(t, []string{"a","b"}, vals)
+	assert.Equal(t, []string{"a", "b"}, vals)
 }
